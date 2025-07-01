@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+</head>
+<body>
+    <header>
+      <h1>Welcome to <%= title %></h1>
+    </header>
+    <h1>Form submitted successfully </h1></br>
+    <h2>Thank you <%= user.name %> for submitting the form</h2>
+    <h2>We will contact you at <%= user.email %></h2>
+    <p>Names submitted are</p>
+    <ul>
+        <% names.forEach(name => { %>
+            <li><%= name %></li>
+        <% }) %>
+    </ul>
+    <a href="/">Go back to Home</a>
+     <!-- <h2>Thank you ${username} for submitting the form</h2>
+     <h2>We will contact you at ${email}</h2>
+     <a href="/">Go back to Home</a> -->
+</body>
+</html>

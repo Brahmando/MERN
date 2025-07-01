@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+</head>
+<body>
+    <header>
+      <h1>Welcome to <%= title %></h1>
+    </header>
+    <h1>Form submitted successfully </h1></br>
+    <% if (Array.isArray(names) && names.length > 0) { %>
+        <% names.forEach(function(user) { %>
+            <div style="max-width: 400px; margin: 20px auto; border: 1px solid #ccc; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); padding: 24px; background: #fafafa;">
+                    <div style="text-align: center;">
+                            <% if (user && user.imgUrl) { %>
+                                    <img src="<%= user.imgUrl %>" alt="User Image" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 16px;">
+                            <% } else { %>
+                                    <div style="width: 100px; height: 100px; border-radius: 50%; background: #eee; display: inline-block; margin-bottom: 16px; line-height: 100px; color: #aaa;">No Image</div>
+                            <% } %>
+                    </div>
+                    <h2 style="text-align: center; margin-bottom: 8px;"><%= user && user.name ? user.name : 'User' %></h2>
+                    <p style="text-align: center; margin: 4px 0;"><strong>Email:</strong> <%= user && user.email ? user.email : 'N/A' %></p>
+                    <p style="text-align: center; margin: 4px 0;"><strong>Age:</strong> <%= user && user.age ? user.age : 'N/A' %></p>
+                    <p style="text-align: center; margin: 4px 0;"><strong>Address:</strong> <%= user && user.address ? user.address : 'N/A' %></p>
+            </div>
+        <% }); %>
+    <% } else { %>
+        <p style="text-align:center;">No users to display.</p>
+    <% } %>
+    <a href="/">Go back to Home</a>
+     <!-- <h2>Thank you ${username} for submitting the form</h2>
+     <h2>We will contact you at ${email}</h2>
+     <a href="/">Go back to Home</a> -->
+</body>
+</html>

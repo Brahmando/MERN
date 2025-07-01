@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> Host Homes</title>
+    <link rel="stylesheet" href="output.css" />
+  </head>
+  <body class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto py-8">
+      <h1 class="text-4xl font-bold text-center mb-10 text-blue-700">
+        Listed Homes
+      </h1>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+      <% houses.forEach((house) => { %>
+      <article
+        class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 flex flex-col"
+      >
+        <figure>
+        <img
+          src="<%= house.imgUrl %>"
+          alt="<%= house.name %>"
+          class="w-full h-48 object-cover"
+        />
+        </figure>
+        <section class="p-6 flex-1 flex flex-col justify-between">
+        <header>
+          <h2 class="text-2xl font-semibold text-gray-800 mb-2">
+            <%= house.name %>
+          </h2>
+        </header>
+        <dl class="space-y-1 mb-4">
+          <div class="flex">
+            <dt class="font-medium text-gray-700 w-20">Email:</dt>
+            <dd class="text-gray-600 truncate"><%= house.email %></dd>
+          </div>
+          <div class="flex">
+            <dt class="font-medium text-gray-700 w-20">City:</dt>
+            <dd class="text-gray-600"><%= house.city %></dd>
+          </div>
+          <div class="flex">
+            <dt class="font-medium text-gray-700 w-20">State:</dt>
+            <dd class="text-gray-600"><%= house.state %></dd>
+          </div>
+        </dl>
+        <div class="flex space-x-2 mt-auto">
+          <a href="/houses/<%= house.id %>/edit" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition">Edit</a>
+          <form action="/houses/<%= house.id %>" method="POST" class="inline">
+            <button type="submit" class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition">Delete</button>
+          </form>
+        </div>
+        </section>
+      </article>
+      <% }) %>
+    </div>
+    </div>
+  </body>
+</html>

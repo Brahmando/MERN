@@ -1,0 +1,1 @@
+Here, we will create a simple MVC application to manage 'home rentals'. The application will allow users to view available homes, add new homes, and delete existing homes.

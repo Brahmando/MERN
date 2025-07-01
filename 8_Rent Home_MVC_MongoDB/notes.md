@@ -1,0 +1,16 @@
+# Packages we installed here for MongoDB integration:
+- mongodb (official MongoDB Node.js driver)
+- mongoose (MongoDB ODM for Node.js)
+# Other important packages:
+- dotenv (for environment variable management)
+- express (web framework for Node.js)
+- body-parser (middleware to parse incoming request bodies)
+- nodemon (utility to automatically restart the server on file changes)
+- express-validator (middleware for validating and sanitizing user input)
+- cors (enables Cross-Origin Resource Sharing)
+- bcryptjs (for password hashing)
+- jsonwebtoken (for authentication using JWT)
+- morgan (HTTP request logger middleware)
+- cookie-parser (for parsing cookies)
+- multer (middleware for handling multipart/form-data, used for file uploads)
+- express-session (for session management)
