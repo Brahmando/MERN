@@ -1,22 +1,26 @@
 const express = require('express');
 const path = require('path');
 const homeRouter = require('./routes/homeRouter');
-const {dbConnect} = require('./database/dbConnect');
+const { dbConnect } = require('./database/dbConnect');
 const { default: mongoose } = require('mongoose');
 const authRouter = require('./routes/authRouter');
 const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
 const app = express()
+
+
+
+
 app.use(express.urlencoded({ extended: true }));
 
 
-const mongoUrl='mongodb+srv://powerangerinfinite123:n2n1RXzFsHFfzmNJ@mongocluster.pe7odxo.mongodb.net/RentHouse?retryWrites=true&w=majority&appName=MongoCluster'
-const store= new MongoDBStore({
+const mongoUrl = 'mongodb+srv://powerangerinfinite123:n2n1RXzFsHFfzmNJ@mongocluster.pe7odxo.mongodb.net/RentHouse?retryWrites=true&w=majority&appName=MongoCluster'
+const store = new MongoDBStore({
     uri: mongoUrl,
     collection: 'sessions'
 })
 
-store.on('error',(err)=> console.log(err));
+store.on('error', (err) => console.log(err));
 
 app.use(session({
     secret: 'secret_key',
@@ -41,9 +45,9 @@ app.use((req, res, next) => {
 });
 
 
-mongoose.connect(mongoUrl).then(()=>{
+mongoose.connect(mongoUrl).then(() => {
     console.log('Connected to MongoDB');
-     app.listen(3000, () => {                                                
+    app.listen(3000, () => {
         console.log('Server is running on port http://localhost:3000');
     })
 }).catch(err => {

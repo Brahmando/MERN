@@ -1,10 +1,26 @@
 const express = require('express');
+const path = require('path');
 const House = require('../models/hostHouse');
 const { default: mongoose } = require('mongoose');
 const User = require('../models/user');
 const homeRouter = express.Router();
 
 const { ObjectId } = mongoose.Types;
+
+const multer = require('multer')
+
+const storage = multer.diskStorage(
+    {
+        destination: (req, res, cb) => {
+            cb(null, path.join(__dirname, '../public/images/Houses'))
+        },
+        filename: function (req, file, cb) {
+            cb(null, Date.now() + '-' + file.originalname);
+        }
+    }
+)
+
+const upload=multer({storage}) 
 
 homeRouter.get('/', (req, res, next) => {
     
@@ -90,8 +106,10 @@ homeRouter.get('/add-home', (req, res, next) => {
 }
 );
 
-homeRouter.post('/add-home', async (req, res, next) => {
+homeRouter.post('/add-home',upload.single('image'), async (req, res, next) => {
+    console.log('FILE-',req.file)
     const { name, email, city, state, imageUrl } = req.body;
+    console.log(name, email, city, state, imageUrl )
     try {
         const newHouse = await House.create({ name, email, city, state, imgUrl: imageUrl });
         console.log(newHouse)
